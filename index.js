@@ -1,3 +1,41 @@
+const form = document.querySelector("form");
+const input = document.querySelector("input");
+
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    let url = input.value.trim();
+    openURL(url);
+  });
+  
+  function isUrl(val = "") {
+    if (
+      /^http(s?):\/\//.test(val) ||
+      (val.includes(".") && val.substr(0, 1) !== " ")
+    )
+      return true;
+    return false;
+  }
+  
+
+// open url function
+function openURL(url) {
+    window.navigator.serviceWorker
+    .register("./sw.js", {
+      scope: __uv$config.prefix,
+    })
+    .then(() => {
+      if (!isUrl(url)) url = getSearchEngineURL() + url;
+      else if (!(url.startsWith("https://") || url.startsWith("http://")))
+        url = "http://" + url;
+
+      if (getAboutBlank() === 'on') {
+        openAboutBlank(window.location.href.slice(0, -1) + __uv$config.prefix + __uv$config.encodeUrl(url));
+      } else {
+        window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
+      }
+    });
+};
+
 selectedIcon('icon-home');
 
 if (getAboutBlank() === 'on') {
@@ -21,6 +59,8 @@ function getSearchEngine () {
     return localStorage.getItem('searchEngine') || 'Google';
 }
 
+// start of anaylitics functions
+
 function getAnalytics() {
     return localStorage.getItem('analytics') || 'on';
 }
@@ -36,29 +76,21 @@ function setAnalytics() {
     location.reload();
 }
 
-// analytics
-if(localStorage.getItem('analytics') != 'off') {
-    var scriptTag = document.createElement('script');
-    scriptTag.setAttribute('async', '');
-    scriptTag.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-CX3B4NHEG0');
-    document.head.appendChild(scriptTag);
-    // gtag
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments)};
-    gtag('js', new Date());
+// analytics (change it if you want to enable it)
+// if(localStorage.getItem('analytics') != 'off') {
+//     var scriptTag = document.createElement('script');
+//     scriptTag.setAttribute('async', '');
+//     scriptTag.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-??????????');
+//     document.head.appendChild(scriptTag);
+//     // gtag
+//     window.dataLayer = window.dataLayer || [];
+//     function gtag(){dataLayer.push(arguments)};
+//     gtag('js', new Date());
 
-    gtag('config', 'G-CX3B4NHEG0');
-}
+//     gtag('config', 'G--??????????');
+// }
 
-//ads
-if (getAnalytics() === 'on') {
-    var scriptTag = document.createElement('script');
-
-    scriptTag.setAttribute('async', '');
-    scriptTag.setAttribute('src', 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9866124135272809');
-    scriptTag.setAttribute('crossorigin', 'anonymous');
-    document.head.appendChild(scriptTag);
-}
+// end of anaylitics functions
 
 // Set their preferred search engine
 function setSearchEngine () {
@@ -83,6 +115,8 @@ function setSearchEngine () {
 function getSearchEngineURL() {
     return localStorage.getItem('searchEngineURL') || 'https://google.com/search?q=';
 }
+
+// Start of about:blank functions
 
 function getAboutBlank() {
     if (localStorage.getItem('aboutBlank') === 'on') {
@@ -123,7 +157,9 @@ function openAboutBlank(url) {
       w.document.body.style.margin = '0'
     window.location.replace(getSearchEngineURL()); 
 }
+// end of about:blank functions
 
+// changes the selected icon
 function selectedIcon(icon) {
     const icons = document.querySelectorAll(`[id^="icon"]`);
     icons.forEach(element =>{
@@ -132,7 +168,7 @@ function selectedIcon(icon) {
     document.getElementById(icon).classList.toggle('sidebar-icon-selected')
 }
 
-
+// opens a certain page using css and hides the others
 function openPage(page) {
     if (page === 'home') {
         document.getElementById("search").style.display = "none";
@@ -149,6 +185,7 @@ function openPage(page) {
     }
 }
 
+// sets the custom shortcut
 function setCustomShortcut() {
     const $shortcutURL = document.getElementById('shortcutURL');
     const $shortcutLogo = document.getElementById('shortcutLogo');
@@ -172,6 +209,7 @@ function setCustomShortcut() {
     }
 }
 
+// changes the text on the custom shortcut and changes the onclick function to open the shortcut url
 function setupCustomShortcut() {
     if (localStorage.getItem('shortcutURL') != null) {
         document.getElementById('customShortcutIcon').innerHTML = localStorage.getItem('shortcutLogo');
