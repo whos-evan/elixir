@@ -1,5 +1,7 @@
 # Elixir Proxy
+---
 
+## Features
 - A very nice looking proxy built using Tailwind CSS!
 - Super fast (most of the time)!
 - Constant updates!
