@@ -1,10 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html'],
+  content: {
+    relative: true,
+    files: ['./public/index.html']
+  },
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
+        'Inter': ['Inter', 'sans-serif'],
       },
       colors: {
         'primary': '#0d2c4c',
