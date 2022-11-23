@@ -1,7 +1,7 @@
 "use strict";
 /**
  * Global util
- * Used in 404.html and index.html
+ * Used in index.html
  */
 async function registerSW() {
   if (!navigator.serviceWorker)
