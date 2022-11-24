@@ -38,6 +38,8 @@ function openURL(url) {
 
 selectedIcon('icon-home');
 
+setupCloak();
+
 if (getAboutBlank() === 'on') {
     openPage('search');
     selectedIcon('icon-search');
@@ -77,18 +79,18 @@ function setAnalytics() {
 }
 
 // analytics (change it if you want to enable it)
-// if(localStorage.getItem('analytics') != 'off') {
-//     var scriptTag = document.createElement('script');
-//     scriptTag.setAttribute('async', '');
-//     scriptTag.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-??????????');
-//     document.head.appendChild(scriptTag);
-//     // gtag
-//     window.dataLayer = window.dataLayer || [];
-//     function gtag(){dataLayer.push(arguments)};
-//     gtag('js', new Date());
+if(localStorage.getItem('analytics') != 'off') {
+    var scriptTag = document.createElement('script');
+    scriptTag.setAttribute('async', '');
+    scriptTag.setAttribute('src', 'https://www.googletagmanager.com/gtag/js?id=G-CX3B4NHEG0');
+    document.head.appendChild(scriptTag);
+    // gtag
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
 
-//     gtag('config', 'G--??????????');
-// }
+    gtag('config', 'G-CX3B4NHEG0');
+}
 
 // end of anaylitics functions
 
@@ -216,3 +218,56 @@ function setupCustomShortcut() {
         document.getElementById('customShortcutDiv').onclick = function() {openURL(localStorage.getItem('shortcutURL'))};
     }
 }
+
+// sets the cloak
+function setCloak() {
+    const $cloakTitle = document.getElementById('cloakTitle');
+    const $cloakFavicon = document.getElementById('cloakFavicon');
+
+    if ($cloakTitle.value === '' && $cloakFavicon.value === '') {
+        alert('Cleared cloak');
+        localStorage.removeItem('cloakTitle');
+        localStorage.removeItem('cloakFavicon');
+    } else if ($cloakTitle.value === '' && $cloakFavicon.value != '') {
+        if ($cloakFavicon.value.match(/(https?:\/\/).*/gi)) {
+            localStorage.setItem('cloakFavicon', $cloakFavicon.value);
+        }
+    } else if ($cloakTitle.value != '' && $cloakFavicon.value === '') {
+        localStorage.setItem('cloakTitle', $cloakTitle.value);
+    } else {
+        localStorage.setItem('cloakTitle', $cloakTitle.value);
+        if ($cloakFavicon.value.match(/(https?:\/\/).*/gi)) {
+            localStorage.setItem('cloakFavicon', $cloakFavicon.value);
+        } else {
+            alert('Please enter a valid URL like: https://example.com/favicon.ico');
+        }
+    }
+    setupCloak();
+}
+
+// changes the text on the custom shortcut and changes the onclick function to open the shortcut url
+function setupCloak() {
+    if (localStorage.getItem('cloakTitle') != null) {
+        document.title = localStorage.getItem('cloakTitle');
+    }
+    if (localStorage.getItem('cloakFavicon') != null) {
+        changeFavicon(localStorage.getItem('cloakFavicon'));
+    }
+    if (localStorage.getItem('cloakTitle') == null && localStorage.getItem('cloakFavicon') == null) {
+        document.title = 'Elixir - Blazingly Fast Math Help!';
+        changeFavicon('favicon.ico');
+    }
+}
+
+// changes the favicon
+function changeFavicon(src) {
+    var link = document.createElement('link'),
+        oldLink = document.getElementById('dynamic-favicon');
+    link.id = 'dynamic-favicon';
+    link.rel = 'shortcut icon';
+    link.href = src;
+    if (oldLink) {
+     document.head.removeChild(oldLink);
+    }
+    document.head.appendChild(link);
+   }
