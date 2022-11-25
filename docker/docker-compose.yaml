@@ -11,7 +11,7 @@ services:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - /route/to/static:/static #change this to the folder where your static files are
   bare-server:
-    build: ./bare-server/Dockerfile
+    build: ./bare-server
     restart: unless-stopped
     ports:
       - "8080:8080"
