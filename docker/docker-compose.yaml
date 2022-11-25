@@ -1,7 +1,7 @@
 version: "3"
 services:
   caddy:
-    build: ./caddy
+    image: caddy:latest
     restart: unless-stopped
     command: caddy run --config /etc/caddy/Caddyfile
     ports:
@@ -16,5 +16,3 @@ services:
     ports:
       - "8080:8080"
 #    dns: 192.168.0.1 # change this to pihole if you want to run that
-    volumes:
-      - ./bare-server:/app
