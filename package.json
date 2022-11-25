@@ -1,0 +1,25 @@
+{
+  "name": "elixir",
+  "version": "1.0.0",
+  "description": "Official Elxiir deployment with TompHTTP bare server included.",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "files": ["static", "src"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whos-evan/elxiir.git"
+  },
+  "keywords": ["official", "ultraviolet", "elixir", "bare-server", "bypass-filter", "unblocker", "evan"],
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "@tomphttp/bare-server-node": "^1.2.2",
+    "serve-static": "^1.15.0"
+  },
+  "engines": {
+		"npm": ">=8.0.0",
+		"node": ">=16.0.0"
+	}
+}
