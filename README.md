@@ -1,7 +1,5 @@
 # Elixir Proxy
 
-## Deploy!
-
 <p align="center">
     <a href="https://render.com/deploy?repo=https://github.com/whos-evan/elixir" alt="Deploy to Render">
         <img src="https://img.shields.io/badge/-Deploy to Render-blue?style=for-the-badge&logo=Render" /></a>
