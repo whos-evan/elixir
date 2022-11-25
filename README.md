@@ -22,7 +22,7 @@
 - Easy to use shortcut buttons!
 - Ability to disable analytics for those that actually care about their privacy.
 - Customizable search engine (Google, DuckDuckGo, Brave Search, or Bing).
-- about:blank cloaking!
+- about:blank or tab cloaking!
 
 ## Official Links
 - https://elixirofficial.com
