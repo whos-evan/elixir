@@ -2,7 +2,7 @@
   "name": "elixir",
   "version": "1.0.0",
   "description": "Official Elxiir deployment with TompHTTP bare server included.",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "node src/index.js"
   },
