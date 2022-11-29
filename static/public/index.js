@@ -176,12 +176,12 @@ function openPage(page) {
         document.getElementById("search").style.display = "none";
         document.getElementById("settings").style.display = "none";
         document.getElementById("home").style.display = "flex";
-        document.getElementById("footer").style.display = "flex";
+        document.getElementById("footer").style.display = "block";
     } else if (page === 'search') {
         document.getElementById("home").style.display = "none";
         document.getElementById("settings").style.display = "none";
         document.getElementById("search").style.display = "flex";
-        document.getElementById("footer").style.display = "flex";
+        document.getElementById("footer").style.display = "block";
     } else if (page === 'settings') {
         document.getElementById("home").style.display = "none";
         document.getElementById("search").style.display = "none";
