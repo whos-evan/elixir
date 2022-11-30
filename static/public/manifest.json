@@ -2,6 +2,7 @@
 "name": "Elixir",
 "short_name": "Elixir - Instant Math Help",
 "start_url": "https://elixirofficial.com",
+"scope": "https://docs.pwabuilder.com",
 "display": "standalone",
 "description": "Get world class support for K-12 mathematics.",
 "lang": "en",
@@ -11,14 +12,14 @@
 "orientation": "any",
 "icons": [
     {
-        "src": "https://elixirofficial.com/assets/icons/icon_512.png",
-        "sizes": "512x512",
+        "src": "https://elixirofficial.com/assets/icons/manifest-icon-192.maskable.png",
+        "sizes": "192x192",
         "type": "image/png",
         "purpose": "maskable"
     },
     {
-        "src": "https://elixirofficial.com/assets/icons/icon_192.png",
-        "sizes": "192x192",
+        "src": "https://elixirofficial.com/assets/icons/apple-icon-180.png",
+        "sizes": "180x180",
         "type": "image/png",
         "purpose": "any"
     }
