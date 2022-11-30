@@ -288,3 +288,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   // as part of a critical journey.
   showInAppInstallPromotion();
 });
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register(window.location.origin + "/sw.js");
+  }
