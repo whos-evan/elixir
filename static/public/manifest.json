@@ -2,7 +2,7 @@
 "name": "Elixir",
 "short_name": "Elixir - Instant Math Help",
 "start_url": "https://elixirofficial.com",
-"scope": "https://docs.pwabuilder.com",
+"scope": "https://elixirofficial.com",
 "display": "standalone",
 "description": "Get world class support for K-12 mathematics.",
 "lang": "en",
