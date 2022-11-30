@@ -18,6 +18,12 @@
         "purpose": "maskable"
     },
     {
+        "src": "https://elixirofficial.com/assets/icons/manifest-icon-512.maskable.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
         "src": "https://elixirofficial.com/assets/icons/apple-icon-180.png",
         "sizes": "180x180",
         "type": "image/png",
@@ -32,5 +38,5 @@
         "description": "A screenshot of the home page"
     }
 ],
-"prefer_related_applications": "true"
+"prefer_related_applications": "false"
 }
