@@ -11,8 +11,8 @@
     <title>Elixir - Blazingly Fast Math Help!</title>
     <link rel="manifest" href="./assets/manifest.json">
   </head>
-  <body class="h-full min-h-full">
-    <div class="flex">
+  <body id="main" class="h-full min-h-full bg-gray-700">
+    <div id="sidebar" class="flex">
       <div class="fixed top-0 left-0 h-screen w-16 m-0
             flex flex-col
             bg-primary text-white shadow-lg">
@@ -94,7 +94,20 @@
         </div>
       </div>
     </div>
-    <!-- make this take full height and center it -->
+
+    <div id="password" class="hidden
+         bg-gray-300 dark:bg-gray-700
+         m-0 
+         h-full w-full 
+         overflow-hidden">
+      <div class="flex m-auto w-[45%]">
+        <input id="password-prompt" class="p-3 
+               w-full h-15 mr-3
+               input-bar" placeholder="Enter your password here">
+        <button onclick="checkPassword()" class="bg-secondary text-white rounded-lg p-3">Submit</button>
+      </div>
+    </div>
+
     <div id="home" class="flex
          bg-gray-300 dark:bg-gray-700
          h-full w-full pl-16
@@ -108,6 +121,7 @@
         <b>Elixir:</b>
         <br>Search the web without censorship. <br>Click here to get started! </a>
     </div>
+
     <div id="search" class="hidden
          bg-gray-300 dark:bg-gray-700
          m-0 
@@ -123,8 +137,7 @@
          bg-gray-300 dark:bg-gray-700
          m-0
          h-full w-full
-         align-middle items-center
-         overflow-hidden">
+         align-middle items-center">
       <div class="grid grid-cols-2 grid-rows-2 gap-5 items-center align-middle justify-center text-center ml-[12rem] mr-[8rem] w-full m-0">
         <div class="bg-gray-800 rounded-lg p-5 col-span-2">
           <p class="text-[26px] text-white font-bold">Settings:</p>
@@ -164,17 +177,15 @@
           <button onclick="setCustomShortcut()" class="bg-secondary mr-3 text-white rounded-lg p-3">Submit</button>
         </div>
         <div class="bg-gray-800 rounded-lg p-5 col-span-2">
-          <p class="text-[15px] mb-3 text-white font-bold">Cloak tab:</p>
-          <input id="cloakFavicon" class="p-3
-               w-1/2 h-15
-               input-bar" placeholder="Icon (https://google.com/favicon.ico)">
-          <input id="cloakTitle" class="p-3
-               w-1/3 h-15
-               input-bar" placeholder="Title (Google)">
-          <button onclick="setCloak()" class="bg-secondary mr-3 text-white rounded-lg p-3">Submit</button>
+          <p class="text-[15px] mb-3 text-white font-bold">Set Password:</p>
+          <input id="password-set" class="p-3
+               w-[83.53%] h-15
+               input-bar" placeholder="Enter the password here">
+          <button onclick="setPassword()" class="bg-secondary mr-3 text-white rounded-lg p-3">Submit</button>
         </div>
       </div>
     </div>
+
     <footer id="footer" class="absolute w-full transition-opacity bottom-0 p-5 ">
       <div class="flex justify-evenly items-center h-16 ml-16 bg-gray-800 rounded-lg text-white">
         <a class="text-sm hover:underline cursor-pointer" href="https://discord.gg/TXBxFM4rEJ">Made with ❤️ by evan</a>
@@ -183,6 +194,7 @@
         <a class="text-sm hover:underline cursor-pointer" href="./pages/about.html">About</a>
       </div>
     </footer>
+
       <script src="./js/uv/uv.bundle.js"></script>
       <script src="./js/uv/uv.config.js"></script>
       <script src="./js/register-uv.js"></script>

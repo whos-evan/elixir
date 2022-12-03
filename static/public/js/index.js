@@ -1,6 +1,43 @@
 const form = document.querySelector("form");
 const input = document.querySelector("input");
 
+// start of password protection
+if (getPassword() == null) {
+    openPage('home');
+} else {
+    openPage('password');
+    document.getElementById('sidebar').style.display = 'none';
+}
+
+function getPassword() {
+    return localStorage.getItem('password') || null;
+}
+
+function setPassword() {
+    const $password = document.getElementById('password-set');
+    const password = $password.value;
+    if (password == null || password == '') {
+        alert('Removed password');
+        localStorage.removeItem('password');
+        return;
+    }
+    if (confirm("Are you sure you want to password protect this page? If you do, you will not be able to access this page without the password. If you do not want to password protect this page, click cancel.") == true) {
+        localStorage.setItem('password', password);
+    }
+}
+
+function checkPassword() {
+    const $password = document.getElementById('password-prompt');
+    const password = $password.value;
+    if (password == getPassword()) {
+        openPage('home');
+        document.getElementById('sidebar').style.display = 'flex';
+    } else {
+        window.location.href = getSearchEngineURL();
+    }
+}
+
+// end of password protection
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
     let url = input.value.trim();
@@ -183,16 +220,25 @@ function openPage(page) {
         document.getElementById("settings").style.display = "none";
         document.getElementById("home").style.display = "flex";
         document.getElementById("footer").style.display = "block";
+        document.getElementById("password").style.display = "none";
     } else if (page === 'search') {
         document.getElementById("home").style.display = "none";
         document.getElementById("settings").style.display = "none";
         document.getElementById("search").style.display = "flex";
         document.getElementById("footer").style.display = "block";
+        document.getElementById("password").style.display = "none";
     } else if (page === 'settings') {
         document.getElementById("home").style.display = "none";
         document.getElementById("search").style.display = "none";
         document.getElementById("settings").style.display = "flex";
         document.getElementById("footer").style.display = "none";
+        document.getElementById("password").style.display = "none";
+    } else if (page === 'password') {
+        document.getElementById("home").style.display = "none";
+        document.getElementById("search").style.display = "none";
+        document.getElementById("settings").style.display = "none";
+        document.getElementById("footer").style.display = "none";
+        document.getElementById("password").style.display = "flex";
     }
 }
 

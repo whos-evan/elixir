@@ -1,6 +1,6 @@
 var cacheName = 'elixir';
 var filesToCache = [
-  '/sw.js'
+  '/js/sw.js'
 ];
 
 self.addEventListener('install', function(e) {
