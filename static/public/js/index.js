@@ -328,5 +328,5 @@ function changeFavicon(src) {
    }
    
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register(window.location.origin + "/sw.js");
+    navigator.serviceWorker.register(window.location.origin + "/js/sw.js");
   }
