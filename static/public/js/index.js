@@ -47,6 +47,7 @@ function togglePassword() {
 }
 
 // end of password protection
+
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
     let url = input.value.trim();
@@ -339,3 +340,52 @@ function changeFavicon(src) {
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register(window.location.origin + "/js/sw.js");
   }
+
+// announcement code
+function announcement(text) {
+    document.getElementById("notification-text").innerHTML = text;
+    document.getElementById("announcement").style.display = "block";
+}
+
+function fetchAnnouncement() {
+    fetch("./assets/announcement.json")
+    .then(response => response.json())
+    .then(data => {
+        // randonly selects an announcement
+        const announcementText = data.announcements.sort();
+        const randomAnnouncement = announcementText[Math.floor(Math.random() * announcementText.length)];
+        const importantAnnouncement = data['important'][0]
+        // randomly choose between important and normal announcement
+        const random = Math.floor(Math.random() * 2);
+        if (random === 0) {
+            announcement(randomAnnouncement);
+        } else {
+            announcement(importantAnnouncement);
+        }
+    });
+}
+
+function closeAnnouncement() {
+    document.getElementById("announcement").style.display = "none";
+    // dont show for 24 hours
+    localStorage.setItem('announcement', Date.now());
+}
+
+function showAnnouncement() {
+    // check if announcement has been shown in the last 24 hours
+    if (localStorage.getItem('announcement') != null) {
+        const lastShown = localStorage.getItem('announcement');
+        const now = Date.now();
+        const diff = now - lastShown;
+        const hours = Math.floor(diff / 1000 / 60 / 60);
+        if (hours > 2) {
+            fetchAnnouncement();
+        }
+    } else {
+        fetchAnnouncement();
+    }
+}
+
+showAnnouncement();
+
+// end of announcement code
