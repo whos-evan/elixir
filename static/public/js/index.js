@@ -37,6 +37,15 @@ function checkPassword() {
     }
 }
 
+function togglePassword() {
+    var x = document.getElementById("passwordToggle");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+
 // end of password protection
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
