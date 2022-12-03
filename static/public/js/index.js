@@ -1,5 +1,5 @@
 const form = document.querySelector("form");
-const input = document.querySelector("input");
+const input = document.getElementById("searchInput");
 
 // start of password protection
 if (getPassword() == null) {
@@ -53,14 +53,14 @@ form.addEventListener("submit", async (event) => {
     openURL(url);
   });
   
-  function isUrl(val = "") {
+function isUrl(val = "") {
     if (
-      /^http(s?):\/\//.test(val) ||
-      (val.includes(".") && val.substr(0, 1) !== " ")
+        /^http(s?):\/\//.test(val) ||
+        (val.includes(".") && val.substr(0, 1) !== " ")
     )
-      return true;
+        return true;
     return false;
-  }
+}
   
 
 // open url function
