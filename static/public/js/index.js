@@ -66,7 +66,7 @@ form.addEventListener("submit", async (event) => {
 // open url function
 function openURL(url) {
     window.navigator.serviceWorker
-    .register("./uv.js", {
+    .register("/js/uv.js", {
       scope: __uv$config.prefix,
     })
     .then(() => {
