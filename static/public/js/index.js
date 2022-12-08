@@ -355,12 +355,17 @@ function fetchAnnouncement() {
         const announcementText = data.announcements.sort();
         const randomAnnouncement = announcementText[Math.floor(Math.random() * announcementText.length)];
         const importantAnnouncement = data['important'][0]
-        // randomly choose between important and normal announcement
-        const random = Math.floor(Math.random() * 2);
-        if (random === 0) {
-            announcement(randomAnnouncement);
+        const superAnnouncement = data['super'][0]
+        if (superAnnouncement != null) {
+            announcement(superAnnouncement);
         } else {
-            announcement(importantAnnouncement);
+            // randomly choose between important and normal announcement
+            const random = Math.floor(Math.random() * 2);
+            if (random === 0) {
+                announcement(randomAnnouncement);
+            } else {
+                announcement(importantAnnouncement);
+            }
         }
     });
 }
