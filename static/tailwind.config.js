@@ -6,6 +6,7 @@ module.exports = {
   },
   theme: {
     extend: {
+      darkMode: true,
       fontFamily: {
         'Inter': ['Inter', 'sans-serif']
       },
