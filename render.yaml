@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: elxiir
+    name: elixir
     env: node
     buildCommand: npm install
     startCommand: npm start
