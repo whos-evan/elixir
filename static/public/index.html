@@ -17,14 +17,14 @@
     <div id="announcement" class="hidden absolute w-full pt-5 pr-5">
       <!-- pop up showing help information -->
       <div id="toast-default"
-      class="flex float-right m-auto items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-white dark:bg-orange-400"
+      class="flex float-right m-auto items-center w-full max-w-xs p-4 rounded-lg shadow text-white bg-orange-400"
       role="alert">
       <div
-        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:bg-primary dark:text-white">
+        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg bg-primary text-white">
         <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/></svg>
       </div>
       <div id="notification-text" class="ml-3 text-sm font-normal">Loading...</div>
-      <button onclick="closeAnnouncement()" type="button" class="ml-auto -mx-1.5 -my-1.5 text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-primary inline-flex h-8 w-8 dark:text-gray-200 dark:hover:text-white" data-collapse-toggle="toast-default" aria-label="Close">
+      <button onclick="closeAnnouncement()" type="button" class="ml-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-primary inline-flex h-8 w-8 text-gray-200 hover:text-white" data-collapse-toggle="toast-default" aria-label="Close">
           <span class="sr-only">Close</span>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
       </button>
@@ -117,7 +117,7 @@
 
     <!-- passowrd page -->
     <div id="password" class="hidden
-         bg-gray-300 dark:bg-gray-700
+         bg-gray-700
          m-0 
          h-full w-full 
          overflow-hidden">
@@ -131,7 +131,7 @@
 
     <!-- home page -->
     <div id="home" class="flex
-         bg-gray-300 dark:bg-gray-700
+         bg-gray-700
          h-full w-full pl-16
          overflow-hidden">
       <a id="introText" onclick="openPage('search'); selectedIcon('icon-search')" class="font-Inter p-3 m-auto 
@@ -146,7 +146,7 @@
 
     <!-- search page -->
     <div id="search" class="hidden
-         bg-gray-300 dark:bg-gray-700
+         bg-gray-700
          m-0 
          h-full w-full 
          overflow-hidden">
@@ -159,7 +159,7 @@
 
     <!-- settings page -->
     <div id="settings" class="hidden
-         bg-gray-300 dark:bg-gray-700
+         bg-gray-700
          m-0
          h-full w-full
          align-middle items-center">
@@ -168,7 +168,7 @@
           <p class="text-[26px] text-white font-bold">Settings:</p>
         </div>
         <div class="row-start-2 bg-gray-800 p-5 rounded-lg">
-          <a class="text-sm font-medium text-gray-900 dark:text-white">Default Search Engine: </a>
+          <a class="text-sm font-medium text-white">Default Search Engine: </a>
           <select onchange="setSearchEngine()" id="searchSelect">
             <option value="Google">Google</option>
             <option value="Brave Search">Brave Search</option>
@@ -177,7 +177,7 @@
           </select>
         </div>
         <div class="bg-gray-800 p-5 rounded-lg">
-          <a class="text-sm font-medium text-gray-900 dark:text-white">
+          <a class="text-sm font-medium text-white">
             <i>about:blank</i> Preference: </a>
           <select onchange="setAboutBlank();" id="aboutBlankSelect">
             <option value="on">On</option>
@@ -185,7 +185,7 @@
           </select>
         </div>
         <div class="bg-gray-800 p-5 rounded-lg">
-          <a class="text-sm font-medium text-gray-900 dark:text-white">Analytics Preference: </a>
+          <a class="text-sm font-medium text-white">Analytics Preference: </a>
           <select onchange="setAnalytics(); location.reload" id="analyticsSelect">
             <option value="on">On</option>
             <option value="off">Off</option>
