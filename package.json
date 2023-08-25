@@ -1,17 +1,14 @@
 {
-  "name": "elixir",
+  "name": "imagine",
   "version": "1.0.0",
-  "description": "Official Elxiir deployment with TompHTTP bare server included.",
+  "description": "imagine.",
   "type": "module",
   "scripts": {
     "start": "node src/index.js"
   },
   "files": ["static", "src"],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/whos-evan/elxiir.git"
-  },
-  "keywords": ["official", "ultraviolet", "elixir", "bare-server", "bypass-filter", "unblocker", "evan"],
+
+  "keywords": ["official", "ultraviolet", "imagine", "bare-server", "bypass-filter", "unblocker", "darwin"],
   "author": "",
   "license": "GPL-3.0-or-later",
   "dependencies": {
