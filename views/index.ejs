@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Darwin streams </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600&family=Josefin+Slab&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+
+
+</head>
+
+<body class="h-100">
+  <div class="h-100" id="video_display">
+
+    <div id ="video_container" class="align-items-center" style="margin-top: 10%;">
+      <div class="local_div" id="div1" style="">
+				<video id="localVideo" class="" autoplay muted playsinline></video>
+			</div>
+			<div class="remote_div" id="div2">
+				<video id="remoteVideo" class="" autoplay playsinline></video>
+			</div>
+    </div>
+
+  </div>
+  
+<button id="muteButton">Mute</button>
+
+  
+
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  
+  <script src="js\config.js"></script>
+
+  <script src="js\main.js"></script>
+  <script src="js/buttons.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,293 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+
+html {
+	display: block;
+	line-height: 1.15;
+}
+
+div {
+	display: block;
+}
+
+body {
+	margin: 0;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+	display: block;
+	background-color: #0080AD;
+	font-family: 'Baloo Tamma 2', cursive;
+}
+
+.h-100 {
+	height: 100%!important;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+}
+
+.ml-auto, .mx-auto {
+    margin-left: auto!important;
+}
+
+.mr-auto, .mx-auto {
+    margin-right: auto!important;
+}
+
+.font-weight-bold {
+    font-weight: 600!important;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+
+.jumbotron {
+    background-color: #e9ecef;
+}
+
+
+
+.align-items-center {
+    -ms-flex-align: center!important;
+    align-items: center!important;
+}
+
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+/* For Desktop  */
+	.col-12 {
+		position: relative;
+		width: 40%;
+	}
+
+	.jumbotron {
+		padding: 2rem 1rem;
+		margin-bottom: 2rem;
+		border-radius: .3rem;
+	}
+
+	#h1 {
+		font-size: 1.5rem;
+		font-weight: 300;
+		line-height: 1.2;
+		margin-bottom: 1rem!important;
+		margin-top: 0px!important;
+	}
+	
+	
+
+@media (orientation: landscape) {
+	.btn-danger {
+		display:block;
+		font-size : 15px;
+		margin:auto;
+		width: 15%;
+		height: 25px;
+		color: #fff;
+		background-color: #25274d;
+		border-color: #25274d;
+	}
+		
+	.btn {
+		display:block;
+		font-size : 15px;
+		margin:auto;
+		margin-right:0px;
+		width: 15%;
+		height: 25px;
+		color: #fff;
+		background-color: #25274d;
+		border-color: #25274d;
+	}
+	
+	.btn_option {
+		display:block;
+		font-size : 15px;
+		margin:auto;
+		width: 50%;
+		height: 25px;
+		color: #fff;
+		background-color: #25274d;
+		border-color: #25274d;
+	}
+	
+	
+	
+	#room_value {
+		margin-left: 20px;
+	}
+	
+	.local_div {
+		width:33%;
+		float:left
+	}
+
+	.remote_div {
+		width:33%;
+		float:left
+	}
+
+	.remote2_div {
+		width:33%;
+		float:left
+	}
+
+	#video_container {
+		display: flex;
+		width: 85%;
+		margin: auto;
+		height: 80% 
+	}
+	
+	video {
+		width:100%;
+	}
+
+}
+/* For Mobile */
+
+@media (orientation: portrait)
+{
+	.row {
+		margin-right: -15px;
+		margin-left: -15px;
+	}
+
+	.col-12 {
+		padding-right: 15px;
+		padding-left: 15px;
+		position: relative;
+		width: 100%;
+	}
+
+	.container {
+		max-width: 310px;
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+
+	.jumbotron {
+		/* padding: 0.02rem 2rem; */
+		padding: 2rem 1rem;
+		margin-bottom: 2rem;
+		border-radius: .3rem;
+	}
+
+	#h1 {
+		font-size: 1.5rem;
+		font-weight: 300;
+		line-height: 1.2;
+		margin-bottom: 1rem!important;
+		margin-top: 0px!important;
+	}
+
+	#label_name {
+		font-size: 17px;
+		width: 100%;
+	}
+
+	.form-group {
+    margin-bottom: 1rem;
+	}
+
+	.form-control {
+		height:35px;
+		font-size:20px;
+		display: block;
+		width: 100%;
+		padding: .375rem .75rem;
+		font-weight: 400;
+		line-height: 1.5;
+		color: #495057;
+		background-color: #fff;
+		background-clip: padding-box;
+		border: 1px solid #ced4da;
+		border-radius: .25rem;
+		transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	}
+
+	.btn {
+		font-size : 16px;
+		width: 100%;
+		height: 35px;
+		color: #fff;
+		background-color: #25274d;
+		border-color: #25274d;
+	}
+
+	.local_div {
+		display: flex
+		;
+		width: 100%;
+		position:relative;
+    overflow:hidden;
+    z-index:-1;
+	}
+
+	.remote_div {
+		width: 120px;
+		display: block;
+		position:absolute;
+		top:0px;
+		right:0px;
+		z-index:1;
+	}
+
+	.remote2_div {
+		width: 120px;
+		display: block;
+		position:absolute;
+		top:95px;
+		right:0px;
+		z-index:1;
+	}
+
+	#video_container {
+		height: 80%;
+		position:relative;
+		display:flex;
+		flex-wrap:wrap
+	}
+	
+	.remote_div video {
+		-ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+
+	.remote2_div video {
+		-ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+	
+	.btn-danger {
+		font-size : 16px;
+		width: 100%;
+		height: 35px;
+		color: #fff;
+		background-color: #25274d;
+		border-color: #25274d;
+	}
+	
+}
+
+
+
+	
