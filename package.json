@@ -9,7 +9,7 @@
   "files": ["static", "src"],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/whos-evan/elxiir.git"
+    "url": "git+https://github.com/whos-evan/elixir.git"
   },
   "keywords": ["official", "ultraviolet", "elixir", "bare-server", "bypass-filter", "unblocker", "evan"],
   "author": "",
