@@ -1,15 +1,16 @@
-# Use Node.js as base image
-FROM node:latest
+FROM node:18
 
-# Set the working directory inside the container
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY package.json ./
 
-RUN npm install
+RUN yarn install --frozen-lockfile
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 3000
 
-CMD ["npm", "start"]
+RUN yarn build
+
+CMD [ "yarn", "start" ]
+

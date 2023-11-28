@@ -1,34 +1,88 @@
-<div align="center">
+# Emerald Proxy
 
-<img src="https://socialify.git.ci/whos-evan/elixir/image?description=1&descriptionEditable=Beautiful%20proxy%20made%20using%20Tailwind%20CSS%2C%20Ultraviolet%20and%20bare-server!%20&forks=1&issues=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2Fwhos-evan%2Felixir%2Fmain%2Fimages%2Flogo.svg&name=1&owner=1&pattern=Solid&pulls=1&stargazers=1&theme=Dark" alt="elixir" width="640" height="320" />
+## Instalation
 
-<p align="center">
-    <a href="https://render.com/deploy?repo=https://github.com/whos-evan/elixir" alt="Deploy to Render">
-        <img src="https://img.shields.io/badge/-Deploy to Render-blue?style=for-the-badge&logo=Render" /></a>
-    <a href="https://heroku.com/deploy?template=https://github.com/whos-evan/elixir" alt="Deploy to Heroku">
-        <img src="https://img.shields.io/badge/-Deploy to Heroku-blue?style=for-the-badge&logo=Heroku" /></a>
-    <a href="https://replit.com/github/whos-evan/elixir" alt="Deploy to Replit">
-        <img src="https://img.shields.io/badge/-Deploy to Replit-blue?style=for-the-badge&logo=Replit" /></a>
-    <a href="https://railway.app/new/template/ioMhDh?referralCode=h7vpyl" alt="Deploy to Railway">
-        <img src="https://img.shields.io/badge/-Deploy to Railway-blue?style=for-the-badge&logo=Railway" /></a>
-</p>
+- Clone repo
 
-</div>
+```bash
+git clone https://github.com/delusionzz/Emerald
+```
 
-## Features
-- A very nice looking proxy built using Tailwind CSS!
-- Super fast! (most of the time)
-- Constant updates!
-- Easy to use shortcut buttons!
-- Ability to disable analytics for those that actually care about their privacy.
-- Customizable search engine (Google, DuckDuckGo, Brave Search, or Bing).
-- about:blank or tab cloaking!
-- Installable as a PWA (Progressive Web App)!
+- cd and install dependencies
 
-## Official Links
-- https://elixirofficial.com
+```bash
+cd Emerald && npm i
+```
 
-## Screenshots
-![brave_aKBpCyVjYI](https://user-images.githubusercontent.com/72959444/203647512-a582b7ba-bee0-4134-96c1-fe4c11e76395.png)
-![brave_1LiTDX2uZX](https://user-images.githubusercontent.com/72959444/203647517-28d94f3b-3adc-44ea-a5ec-4141505d5f90.png)
-![brave_uGniUxj9j5](https://user-images.githubusercontent.com/72959444/203647519-d4d0e6ad-ad16-4a27-b4f8-43754f1ca8eb.png)
+# Using a reverse proxy for bare ?
+
+- comment the following line in the `next.config.mjs` file
+
+```js
+    async rewrites() {
+        return [
+            {
+                source: '/bare/',
+                destination: 'https://tomp.app/',
+            },
+            {
+                source: '/bare/:path*',
+                destination: 'https://tomp.app/:path*/',
+            },
+        ]
+    },
+```
+
+- Build and Start proxy
+
+```bash
+npm run build && npm run start
+```
+
+### Making your Caddy config
+
+- create a file called `Caddyfile`
+
+```bash
+touch Caddyfile
+```
+
+- Make the actual config
+
+```bash
+nano Caddyfile
+```
+
+- input the following config
+
+```
+YOUR_DOMAIN {
+    reverse_proxy localhost:3000
+    handle /bare/* {
+        # remove this if your bare prefix is /bare/
+        uri strip_prefix /bare
+        reverse_proxy YOUR_BARE_SERVER
+    }
+}
+
+```
+
+## Using Docker?
+
+- Clone repo
+
+```bash
+git clone https://github.com/delusionzz/Emerald
+```
+
+- Build image
+
+```bash
+    docker build . -t illusions/emerald
+```
+
+- Run image on port 3000
+
+```bash
+    docker run -p 3000:3000 -d illusions/emerald
+```
