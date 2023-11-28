@@ -1,0 +1,5 @@
+CHANGE.TO.YOUR.DOMAIN {
+        root * /static
+        reverse_proxy /bare/* bare-server:8080
+        file_server
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="h-full min-h-full" lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Elixir - Get Instant Math Help!" property="og:title" />
+    <meta content="Get world class support for K-12 mathematics." property="og:description" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
+    <title>Elixir - Blazingly Fast Math Help!</title>
+    <link rel="manifest" href="./assets/manifest.json">
+  </head>
+  <body id="main" class="h-full min-h-full bg-gray-700">
+
+    <!-- tips and tricks / announcement -->
+    <div id="announcement" class="hidden absolute w-full pt-5 pr-5">
+      <!-- pop up showing help information -->
+      <div id="toast-default"
+      class="flex float-right m-auto items-center w-full max-w-xs p-4 rounded-lg shadow text-white bg-orange-400"
+      role="alert">
+      <div
+        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 rounded-lg bg-primary text-white">
+        <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/></svg>
+      </div>
+      <div id="notification-text" class="ml-3 text-sm font-normal">Loading...</div>
+      <button onclick="closeAnnouncement()" type="button" class="ml-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-primary inline-flex h-8 w-8 text-gray-200 hover:text-white" data-collapse-toggle="toast-default" aria-label="Close">
+          <span class="sr-only">Close</span>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+      </button>
+    </div>
+
+    </div>
+    <!-- sidebar -->
+    <div id="sidebar" class="flex">
+      <div class="fixed top-0 left-0 h-screen w-16 m-0
+            flex flex-col
+            bg-primary text-white shadow-lg">
+        <div id="icon-home" onclick="openPage('home'); selectedIcon('icon-home');" class="sidebar-icon sidebar-icon-selected group">
+          <svg class="absolute h-7 w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: #fff;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M498.89,850.33c-47.43,0-94.86-.43-142.29,.16-28.79,.36-52.3-10.18-70.48-31.79-60.05-71.38-81.26-153.56-63.58-244.73,15.91-81.99,62.33-143.62,133.23-186.99,8.24-5.04,11.68-10.94,11.57-20.62-.42-38.3-.42-76.61,0-114.92,.11-9.72-2.74-13.19-12.86-15-24.92-4.46-34.19-21.35-31.17-52.65,2.17-22.5,14.71-34.03,39.1-34.1,91.82-.24,183.64-.27,275.46,.03,23.75,.08,35.23,12.5,35.74,36.41,.79,37.01,.38,37.84-36.12,51.45-6.72,2.51-7.47,7.12-7.47,12.8,0,40.13,.09,80.26-.06,120.39-.03,8.68,5.23,12.69,11.82,16.7,80.17,48.82,129.53,119.41,139.81,212.74,9.27,84.17-15.96,159.93-73.16,223.27-16.26,18-38.46,26.99-63.63,26.89-48.65-.19-97.29-.06-145.94-.06Zm-190.12-244.09c-5.3,9.6-8.79,19.79-7.47,30.82,4.42,36.88,16.64,71.43,35.56,103.05,6.04,10.1,11.41,23.14,29.35,22.93,88.82-1.01,177.67-.54,266.5-.43,7.07,0,12.89-1.1,17.66-7.04,29-36.1,47.26-76.01,44.87-123.47,1.67-28.43-3.75-55.12-15.98-81.15-24.8-52.78-70.26-82.48-118.83-108.66-11.18-6.02-15.76-12.31-15.58-25.17,.71-52.9-.36-105.83,.67-158.73,.34-17.31-5.54-22.56-22.07-21.3-16.33,1.25-32.89,1.18-49.23,0-14.8-1.06-20.03,3.24-19.74,18.95,.97,51.68-.17,103.39,.7,155.07,.25,15.04-2.76,24.41-17.84,30.97-15.41,6.71-29.31,17.13-43.39,26.64-45.4,30.68-79.44,69.35-87.39,126.11-.6,4.28-2.41,8.31,2.19,11.39Z" />
+            <path class="cls-1" d="M308.77,606.23c29.3-9.27,57.61-21.47,88.36-26.29,53.65-8.41,105.15-2.67,153.59,22.21,38.89,19.97,80.81,27.24,123.32,33,7.43,1.01,14.19-1.72,21.21-3.05,2.39,47.46-15.88,87.38-44.88,123.47-4.77,5.94-10.59,7.05-17.66,7.04-88.84-.11-177.68-.58-266.5,.43-17.94,.2-23.31-12.83-29.35-22.93-18.92-31.63-31.14-66.17-35.56-103.05-1.32-11.03,2.16-21.23,7.47-30.82Z" />
+          </svg>
+          <span class="sidebar-tooltip group-hover:scale-100">Elixir</span>
+        </div>
+        <div id="icon-search" onclick="openPage('search'); selectedIcon('icon-search');" class="sidebar-icon group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-7 w-7" viewBox="0 0 512 512">
+            <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z" />
+          </svg>
+          <span class="sidebar-tooltip group-hover:scale-100">Search</span>
+        </div>
+        <div id="icon-settings" onclick="openPage('settings'); selectedIcon('icon-settings');" class="sidebar-icon group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-7 w-7" viewBox="0 0 512 512">
+            <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336c44.2 0 80-35.8 80-80s-35.8-80-80-80s-80 35.8-80 80s35.8 80 80 80z" />
+          </svg>
+          <span class="sidebar-tooltip group-hover:scale-100">Settings</span>
+        </div>
+        <div id="icon-discord" onclick="openURL('https://discord.gg/3sbH75SvsS')" class="sidebar-icon group animate-pulse">
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-7 w-7" viewBox="0 0 640 512">
+            <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M144 160c-44.2 0-80-35.8-80-80S99.8 0 144 0s80 35.8 80 80s-35.8 80-80 80zm368 0c-44.2 0-80-35.8-80-80s35.8-80 80-80s80 35.8 80 80s-35.8 80-80 80zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM416 224c0 53-43 96-96 96s-96-43-96-96s43-96 96-96s96 43 96 96zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z" />
+          </svg>
+          <span class="sidebar-tooltip group-hover:scale-100">Join the Community Discord!</span>
+        </div>
+        <div>
+          <hr class="sidebar-hr">
+        </div>
+        <div onclick="openURL('https://youtube.com/')" class="sidebar-icon group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-7 w-7" viewBox="0 0 576 512">
+            <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
+          </svg>
+          <span class="sidebar-tooltip group-hover:scale-100">YouTube</span>
+        </div>
+        <div onclick="openURL('https://discord.com/')" class="sidebar-icon group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-7 w-7" viewBox="0 0 640 512">
+            <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z" />
+          </svg>
+          <span class="sidebar-tooltip group-hover:scale-100">Discord</span>
+        </div>
+        <div onclick="openURL('https://tiktok.com/')" class="sidebar-icon group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-7 w-7" viewBox="0 0 448 512">
+            <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" />
+          </svg>
+          <span class="sidebar-tooltip group-hover:scale-100">TikTok</span>
+        </div>
+        <div onclick="openURL('https://open.spotify.com/')" class="sidebar-icon group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-7 w-7" viewBox="0 0 496 512">
+            <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z" />
+          </svg>
+          <span class="sidebar-tooltip group-hover:scale-100">Spotify</span>
+        </div>
+        <div onclick="openURL('https://play.geforcenow.com/')" class="sidebar-icon group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="absolute h-7 w-7" viewBox="-29.99775 -38.70675 259.9805 232.2405">
+            <path d="M83.166 117.393l.004 37.434h10.57v-37.433H83.166zM0 117.343v37.484h10.666v-28.463l8.263.003c2.737 0 4.686.681 6.005 2.088 1.673 1.782 2.355 4.655 2.355 9.912v16.46h10.334v-20.71c0-14.781-9.422-16.775-18.64-16.775H0zm100.188.051v37.433h17.148c9.136 0 12.117-1.52 15.342-4.926 2.28-2.392 3.753-7.642 3.753-13.379 0-5.261-1.247-9.956-3.422-12.879-3.917-5.227-9.56-6.249-17.983-6.249zm10.487 8.15h4.546c6.594 0 10.86 2.962 10.86 10.646 0 7.686-4.266 10.647-10.86 10.647h-4.546v-21.292zm-42.752-8.15L59.1 147.062l-8.455-29.666-11.412-.002 12.074 37.433h15.238l12.169-37.433h-10.79zm73.427 37.433h10.574v-37.43l-10.576-.003zm29.637-37.42l-14.763 37.407h10.425l2.336-6.612h17.47l2.21 6.612h11.32l-14.876-37.41-14.122.004zm6.863 6.825l6.404 17.524h-13.01zM69.189 29.708v-8.993a67.728 67.728 0 012.653-.136c24.596-.773 40.733 21.134 40.733 21.134S95.147 65.919 76.46 65.919c-2.692 0-5.1-.433-7.271-1.162v-27.27c9.575 1.156 11.5 5.386 17.258 14.982L99.25 41.674s-9.345-12.258-25.1-12.258c-1.715 0-3.353.12-4.961.292zm0-29.707v13.433c.882-.07 1.766-.126 2.653-.158 34.205-1.152 56.489 28.052 56.489 28.052s-25.597 31.124-52.262 31.124c-2.443 0-4.73-.225-6.88-.606v8.303c1.838.234 3.742.372 5.73.372 24.815 0 42.76-12.672 60.138-27.671 2.879 2.307 14.675 7.919 17.1 10.378-16.523 13.832-55.028 24.98-76.857 24.98a63.43 63.43 0 01-6.111-.318v11.67h94.316V0H69.19zm0 64.756v7.09c-22.952-4.093-29.322-27.95-29.322-27.95s11.02-12.21 29.322-14.189v7.779c-.014 0-.024-.004-.036-.004-9.604-1.154-17.108 7.82-17.108 7.82s4.204 15.106 17.144 19.454zM28.425 42.862s13.602-20.073 40.764-22.148v-7.28c-30.084 2.414-56.136 27.893-56.136 27.893S27.807 83.985 69.19 87.89v-7.74c-30.368-3.822-40.765-37.288-40.765-37.288z" fill-rule="evenodd" />
+          </svg>
+          <span class="sidebar-tooltip group-hover:scale-100">Nvidia GeForce Now</span>
+        </div>
+        <div id="customShortcutDiv" onclick="" class="sidebar-icon group">
+          <a id="customShortcutIcon" class="absolute font-bold text-[1.75rem]">?</a>
+          <span class="sidebar-tooltip group-hover:scale-100">Custom shortcut!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- passowrd page -->
+    <div id="password" class="hidden
+         bg-gray-700
+         m-0 
+         h-full w-full 
+         overflow-hidden">
+      <div class="flex m-auto w-[45%]">
+        <input id="password-prompt" class="p-3 
+               w-full h-15 mr-3
+               input-bar" placeholder="Enter your password here">
+        <button onclick="checkPassword()" class="bg-secondary text-white rounded-lg p-3">Submit</button>
+      </div>
+    </div>
+
+    <!-- home page -->
+    <div id="home" class="flex
+         bg-gray-700
+         h-full w-full pl-16
+         overflow-hidden">
+      <a id="introText" onclick="openPage('search'); selectedIcon('icon-search')" class="font-Inter p-3 m-auto 
+            w-[350px] h-15
+            rounded-lg
+            text-center
+            cursor-pointer
+            bg-gray-800 text-white">
+        <b>Elixir:</b>
+        <br>Search the web without censorship. <br>Click here to get started! </a>
+    </div>
+
+    <!-- search page -->
+    <div id="search" class="hidden
+         bg-gray-700
+         m-0 
+         h-full w-full 
+         overflow-hidden">
+      <form class="flex m-auto pl-16 w-[45%]">
+        <input id="searchInput" class="p-3 
+               w-full h-15
+               input-bar" placeholder="Search here">
+      </form>
+    </div>
+
+    <!-- settings page -->
+    <div id="settings" class="hidden
+         bg-gray-700
+         m-0
+         h-full w-full
+         align-middle items-center">
+      <div class="grid grid-cols-2 grid-rows-5 gap-5 items-center align-middle justify-center text-center ml-[12rem] mr-[8rem] w-full m-0">
+        <div class="bg-gray-800 rounded-lg p-5 col-span-2">
+          <p class="text-[26px] text-white font-bold">Settings:</p>
+        </div>
+        <div class="row-start-2 bg-gray-800 p-5 rounded-lg">
+          <a class="text-sm font-medium text-white">Default Search Engine: </a>
+          <select onchange="setSearchEngine()" id="searchSelect">
+            <option value="Google">Google</option>
+            <option value="Brave Search">Brave Search</option>
+            <option value="DuckDuckGo">DuckDuckGo</option>
+            <option value="Bing">Bing</option>
+          </select>
+        </div>
+        <div class="bg-gray-800 p-5 rounded-lg">
+          <a class="text-sm font-medium text-white">
+            <i>about:blank</i> Preference: </a>
+          <select onchange="setAboutBlank();" id="aboutBlankSelect">
+            <option value="on">On</option>
+            <option value="off">Off</option>
+          </select>
+        </div>
+        <div class="bg-gray-800 p-5 rounded-lg">
+          <a class="text-sm font-medium text-white">Analytics Preference: </a>
+          <select onchange="setAnalytics(); location.reload" id="analyticsSelect">
+            <option value="on">On</option>
+            <option value="off">Off</option>
+          </select>
+        </div>
+        <div class="bg-gray-800 rounded-lg p-5 col-span-2">
+          <p class="text-[15px] mb-3 text-white font-bold">Custom shortcut:</p>
+          <input id="shortcutURL" class="p-3
+               w-1/2 h-15
+               input-bar" placeholder="Enter URL here">
+          <input id="shortcutLogo" class="p-3
+               w-1/3 h-15
+               input-bar" placeholder="Enter logo letter here">
+          <button onclick="setCustomShortcut()" class="bg-secondary mr-3 text-white rounded-lg p-3">Submit</button>
+        </div>
+        <div class="bg-gray-800 rounded-lg p-5 col-span-2">
+          <p class="text-[15px] mb-3 text-white font-bold">Set Password:</p>
+          <input type="password" id="password-set" class="p-3
+               w-[83.53%] h-15
+               input-bar" placeholder="Enter the password here">
+          <button onclick="setPassword()" class="bg-secondary mr-3 text-white rounded-lg p-3">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer (doesn't show on settings) -->
+    <footer id="footer" class="absolute w-full transition-opacity bottom-0 p-5">
+      <div class="flex justify-evenly items-center h-16 ml-16 bg-gray-800 rounded-lg text-white">
+        <a class="text-sm hover:underline cursor-pointer" href="https://discord.gg/TXBxFM4rEJ">Made with ❤️ by evan</a>
+        <a class="text-sm hover:underline cursor-pointer" href="./pages/privacy-policy.html">Privacy Policy</p>
+        <a class="text-sm hover:underline cursor-pointer" href="./pages/tos.html">Terms of Service</p>
+        <a class="text-sm hover:underline cursor-pointer" href="./pages/about.html">About</a>
+      </div>
+    </footer>
+
+      <script src="./js/uv/uv.bundle.js"></script>
+      <script src="./js/uv/uv.config.js"></script>
+      <script src="./js/register-uv.js"></script>
+      <script src="./js/index.js"></script>
+  </body>
+</html>

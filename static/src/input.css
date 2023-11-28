@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .sidebar-icon {
+    @apply relative flex items-center justify-center
+          h-12 w-12 p-[10px] mt-2 mb-2 mx-auto
+          bg-gray-900 fill-white
+          hover:bg-orange-400
+          rounded-3xl hover:rounded-xl
+          cursor-pointer
+          transition-all duration-300 ease-linear;
+  }
+  .sidebar-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max left-14
+    rounded-md shadow-md
+    text-white bg-gray-900
+    text-xs font-bold
+    transition-all duration-100 scale-0 origin-left;
+  }
+  .sidebar-icon-selected {
+    @apply relative flex items-center justify-center
+          h-12 w-12 p-[10px] mt-2 mb-2 mx-auto
+          bg-orange-400 fill-white
+          rounded-xl
+          cursor-pointer
+          transition-all duration-300 ease-linear;
+  }
+  .sidebar-hr {
+    @apply bg-orange-400
+    border border-orange-400 rounded-full
+    mx-2;
+  }
+  .content-items {
+    @apply flex mx-auto items-center justify-evenly;
+  }
+  .input-bar {
+    @apply bg-white text-black
+    rounded-lg
+    hover:bg-orange-400 hover:text-black hover:placeholder:text-black
+  }
+}

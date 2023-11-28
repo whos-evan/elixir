@@ -1,0 +1,18 @@
+version: "3"
+services:
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    command: caddy run --config /etc/caddy/Caddyfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /route/to/static:/static #change this to the folder where your static files are
+  bare-server:
+    build: ./bare-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+#    dns: 192.168.0.1 # change this to pihole if you want to run that

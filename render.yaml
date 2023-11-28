@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: elixir
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
